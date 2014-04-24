@@ -2,6 +2,7 @@ var fs = require('fs');
 var esprima = require('esprima');
 var estraverse = require('estraverse');
 var doctrine = require('doctrine');
+var chalk = require('chalk');
 
 /**
  * Take a function node and analyze its JsDoc comments
@@ -31,9 +32,9 @@ function analyzeFunction(node) {
 	});
 	if (missing.length > 0) {
 		var msg = '';
-		msg += 'In function ' + node.id.name + ' (Line ' + node.loc.start.line + '):\n';
+		msg += 'In function ' + chalk.cyan(node.id.name) + ' (Line ' + node.loc.start.line + '):\n';
 		missing.forEach(function (m) {
-			msg += '  Parameter ' + m + ' is not documented.';
+			msg += '  Parameter ' + chalk.cyan(m) + ' is not documented.';
 		});
 		throw new Error(msg);
 	}
@@ -47,7 +48,7 @@ function analyzeFunction(node) {
 function verify(node) {
 	switch (node.type) {
 		case esprima.Syntax.FunctionDeclaration:
-			if (node.leadingComments.length === 1) {
+			if (node.leadingComments && node.leadingComments.length === 1) {
 				analyzeFunction(node);
 			}
 			break;

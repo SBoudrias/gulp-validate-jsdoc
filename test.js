@@ -3,6 +3,7 @@ var fs = require('fs');
 var path = require('path');
 var assert = require('assert');
 var gutil = require('gulp-util');
+var chalk = require('chalk');
 var validateJsdoc = require('./index');
 
 var passFixture = path.resolve(__dirname, 'fixtures/pass.js');
@@ -31,7 +32,7 @@ it('fails when errors are found', function (done) {
 
 	stream.on('data', function () {});
 	stream.on('error', function (err) {
-		assert.equal(err.message, 'In function Add (Line 8):\n  Parameter z is not documented.');
+		assert.equal(chalk.stripColor(err.message), 'Error: fixtures/fail.js:\nIn function Add (Line 8):\n  Parameter z is not documented.');
 		done();
 	});
 

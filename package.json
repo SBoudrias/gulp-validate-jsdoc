@@ -13,12 +13,17 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha -R spec"
   },
   "keywords": [
-    "gulpplugin", "AST", "esprima", "jsdoc", "validation"
+    "gulpplugin",
+    "AST",
+    "esprima",
+    "jsdoc",
+    "validation"
   ],
   "dependencies": {
+    "chalk": "^0.4.0",
     "doctrine": "~0.5.0",
     "esprima": "~1.1.1",
     "estraverse": "~1.5.0",
