@@ -1,6 +1,6 @@
 {
   "name": "gulp-validate-jsdoc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Validate JsDoc function parameters are documented",
   "license": "MIT",
   "repository": "SBoudrias/gulp-validate-jsdoc",
