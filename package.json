@@ -1,0 +1,28 @@
+{
+  "name": "gulp-validate-jsdoc",
+  "version": "0.1.0",
+  "description": "Validate JsDoc function parameters are documented",
+  "license": "MIT",
+  "repository": "SBoudrias/gulp-validate-jsdoc",
+  "author": {
+    "name": "Simon Boudrias",
+    "email": "admin@simonboudrias.com",
+    "url": "https://github.com/SBoudrias"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "gulpplugin", "AST", "esprima", "jsdoc", "validation"
+  ],
+  "dependencies": {
+    "doctrine": "~0.5.0",
+    "esprima": "~1.1.1",
+    "estraverse": "~1.5.0",
+    "gulp-util": "~2.2.14",
+    "through2": "~0.4.1"
+  }
+}

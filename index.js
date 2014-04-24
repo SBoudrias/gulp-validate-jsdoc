@@ -1,0 +1,27 @@
+'use strict';
+var gutil = require('gulp-util');
+var through = require('through2');
+var validateJsDoc = require('./validate-jsdoc');
+
+module.exports = function (options) {
+	return through.obj(function (file, enc, cb) {
+		if (file.isNull()) {
+			this.push(file);
+			return cb();
+		}
+
+		if (file.isStream()) {
+			this.emit('error', new gutil.PluginError('gulp-validate-jsdoc', 'Streaming not supported'));
+			return cb();
+		}
+
+		try {
+			validateJsDoc(file.contents);
+		} catch (err) {
+			this.emit('error', new gutil.PluginError('gulp-validate-jsdoc', err));
+		}
+
+		this.push(file);
+		cb();
+	});
+};
